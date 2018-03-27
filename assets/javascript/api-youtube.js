@@ -161,8 +161,7 @@ $(document).ready(function () {
               <a data-title = "${response.results[i].name}" class="btn waves-effect waves-light streamable">Can I stream this?</a>
               <div id = "streaming-services-${response.results[i].name}"></div>
             </div>
-          </div>
-        </div>`;
+          </div>`;
 
         $("#videos-display").append(posterImg);
       }
@@ -287,6 +286,9 @@ $(document).ready(function () {
       for (var i = 0; i < response.results.length; i++) {
         console.log(response.results[i].name);
         var posterPath = tmdbImgUrl + response.results[i].poster_path;
+        if (posterPath.includes('null') === true){
+          posterPath = "assets/images/placeholder.jpg";
+        }
         var posterImg = `
           <div class="poster-container">
             <div class="card">
@@ -309,7 +311,8 @@ $(document).ready(function () {
                 <a data-title = "${response.results[i].name}" class="btn waves-effect waves-light streamable">Can I stream this?</a>
                 <div id = "streaming-services-${response.results[i].name}"></div>
               </div>
-            </div>`;
+            </div>
+          </div>`;
 
         $("#videos-display").append(posterImg);
       }
